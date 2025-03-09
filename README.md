@@ -46,6 +46,18 @@ pip install -e .
 pre-commit install
 ```
 
+> [!IMPORTANT]
+> After a whole year, the Pypi index is updated and pip will not install the package correctly. I have updated requirements to try to fix this issue. If you encounter any problem, please install `Pypi-timemachine` and install the package with the following command:
+> ```bash
+> pip install pypi-timemachine
+> pypi-timemachine 2024-04-20 --port 11451
+> ```
+> Then, you can install the package with the following command:
+> ```bash
+> pip install -e . --index-url http://localhost:11451;
+> pre-commit install
+> ```
+
 You also need to install Java >= 1.8 and <= 1.13 on your machine to compute AAC metrics. If needed, you can override java executable path with the environment variable `AAC_METRICS_JAVA_PATH`.
 
 
