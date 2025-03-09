@@ -59,7 +59,7 @@ pre-commit install
 > pre-commit install
 > ```
 
-> [!INFO]
+> [!TIP]
 > If you are renting a cloud GPU instance, be sure to choose a GPU with at least 11GB of VRAM. The model requires approximatively 10GB of VRAM to train.
 > The server location should be in Europe to download the Clotho dataset. If you are in another region, you can change the server location by setting the environment variable `AAC_DATASETS_SERVER` to `https://datasets.aac.eurecom.fr`.
 > Otherwise, you can download the dataset manually and put it in the `./data` directory.
