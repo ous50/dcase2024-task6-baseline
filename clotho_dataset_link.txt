@@ -1,0 +1,12 @@
+https://zenodo.org/record/4783391/files/clotho_captions_development.csv
+https://zenodo.org/record/4783391/files/clotho_metadata_development.csv
+https://zenodo.org/record/4783391/files/clotho_captions_validation.csv
+https://zenodo.org/record/4783391/files/clotho_metadata_validation.csv
+https://zenodo.org/record/4783391/files/clotho_captions_evaluation.csv
+https://zenodo.org/record/4783391/files/clotho_metadata_evaluation.csv
+https://zenodo.org/record/3865658/files/clotho_metadata_test.csv
+https://zenodo.org/record/4783391/files/clotho_audio_development.7z
+https://zenodo.org/record/4783391/files/clotho_audio_validation.7z
+https://zenodo.org/record/4783391/files/clotho_audio_evaluation.7z
+https://zenodo.org/record/3865658/files/clotho_audio_test.7z
+https://zenodo.org/record/6610709/files/clotho_analysis_2022.zip

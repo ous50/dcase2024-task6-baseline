@@ -47,16 +47,45 @@ pre-commit install
 ```
 
 > [!IMPORTANT]
-> After a whole year, the Pypi index is updated and pip will not install the package correctly. I have updated requirements to try to fix this issue. If you encounter any problem, please install `Pypi-timemachine` and install the package with the following command:
+> After a whole year, the Pypi index is updated and pip will not install the package correctly. I have updated requirements to try to fix this issue. If you encounter any problem, please install `Pypi-timemachine` and run a timeed-back server with the following command:
 > ```bash
 > pip install pypi-timemachine
 > pypi-timemachine 2024-04-20 --port 11451
 > ```
+> You would have to keep this command running in a terminal, either in a separate terminal or in the background.
 > Then, you can install the package with the following command:
 > ```bash
 > pip install -e . --index-url http://localhost:11451
 > pre-commit install
 > ```
+
+> [!INFO]
+> If you are renting a cloud GPU instance, be sure to choose a GPU with at least 11GB of VRAM. The model requires approximatively 10GB of VRAM to train.
+> The server location should be in Europe to download the Clotho dataset. If you are in another region, you can change the server location by setting the environment variable `AAC_DATASETS_SERVER` to `https://datasets.aac.eurecom.fr`.
+> Otherwise, you can download the dataset manually and put it in the `./data` directory.
+> It is recommanded to use a download tool that supports resuming downloads like `wget`, `curl` or `aria2`.
+> The dataset link is available on the [Clotho dataset page](https://clotho-dataset.github.io/).
+> Or you can use the following links:
+> 
+> https://zenodo.org/record/4783391/files/clotho_captions_development.csv
+> https://zenodo.org/record/4783391/files/clotho_metadata_development.csv
+> https://zenodo.org/record/4783391/files/clotho_captions_validation.csv
+> https://zenodo.org/record/4783391/files/clotho_metadata_validation.csv
+> https://zenodo.org/record/4783391/files/clotho_captions_evaluation.csv
+> https://zenodo.org/record/4783391/files/clotho_metadata_evaluation.csv
+> https://zenodo.org/record/3865658/files/clotho_metadata_test.csv
+>
+> https://zenodo.org/record/4783391/files/clotho_audio_development.7z
+> https://zenodo.org/record/4783391/files/clotho_audio_validation.7z
+> https://zenodo.org/record/4783391/files/clotho_audio_evaluation.7z
+> https://zenodo.org/record/3865658/files/clotho_audio_test.7z
+> https://zenodo.org/record/6610709/files/clotho_analysis_2022.zip
+>
+> ```bash
+> mkdir -p data
+> wget -P data -i clotho_dataset_link.txt
+> ```
+>
 
 You also need to install Java >= 1.8 and <= 1.13 on your machine to compute AAC metrics. If needed, you can override java executable path with the environment variable `AAC_METRICS_JAVA_PATH`.
 
