@@ -90,7 +90,8 @@ pre-commit install
 You also need to install Java >= 1.8 and <= 1.13 on your machine to compute AAC metrics. If needed, you can override java executable path with the environment variable `AAC_METRICS_JAVA_PATH`.
 
 > [!WARNING]
-> It is known that OpenJDK 8 has a bug that prevents the AAC metrics from running. You can use [AzulJDK 13](https://www.azul.com/downloads/?version=java-13&show-old-builds=true#zulu) or Oracle JDK 8 to run the metrics.
+> It is known that OpenJDK 8 has a bug that prevents the AAC metrics from running. You can use [AzulJDK 13](https://www.azul.com/downloads/?version=java-13&show-old-builds=true#zulu), which is tested by [ous](https://github.com/ous50), to run the metrics.
+> 
 > For Ubuntu or Apt based system, You can also use the following command to install AzulJDK 13:
 > ```bash
 > sudo apt install gnupg ca-certificates curl
@@ -281,3 +282,5 @@ Then you will be able to import any object from the code like for example `from 
 ## Contact
 Maintainer:
 - [Étienne Labbé](https://labbeti.github.io/) "Labbeti": labbeti.pub@gmail.com
+- [ous50](https://ous50.moe) "ous": me@ous50.moe
+
