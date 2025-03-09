@@ -40,7 +40,7 @@ micromamba activate env_dcase24
 
 Then, you can clone this repository and install it:
 ```bash
-git clone https://github.com/Labbeti/dcase2024-task6-baseline
+git clone https://github.com/ous50/dcase2024-task6-baseline
 cd dcase2024-task6-baseline
 pip install -e .
 pre-commit install
@@ -54,7 +54,7 @@ pre-commit install
 > ```
 > Then, you can install the package with the following command:
 > ```bash
-> pip install -e . --index-url http://localhost:11451;
+> pip install -e . --index-url http://localhost:11451
 > pre-commit install
 > ```
 
