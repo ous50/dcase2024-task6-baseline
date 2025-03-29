@@ -330,6 +330,7 @@ class ConvNeXt(nn.Module):
 # - femto: 5_037_279
 # - pico: 8_805_007
 # - tiny: 28_228_143
+# - large: 197_767_336
 
 CNEXT_IMAGENET_PRETRAINED_URLS = {
     "convnext_atto_1k": "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-rsb-weights/convnext_atto_d2-01bb0f51.pth",
@@ -600,6 +601,42 @@ def convnext_nano(
             CNEXT_IMAGENET_PRETRAINED_URLS["convnext_nano_22k"]
             if in_22k
             else CNEXT_IMAGENET_PRETRAINED_URLS["convnext_nano_1k"]
+        )
+        checkpoint = torch.hub.load_state_dict_from_url(
+            url=url, map_location="cpu", check_hash=True  # type: ignore
+        )
+        model.load_state_dict(checkpoint, strict=strict)
+        stem_audioset = nn.Conv2d(
+            1, 80, kernel_size=(18, 4), stride=(18, 4), padding=(9, 0)
+        )
+        # stem_audioset = nn.Conv2d(1, 96, kernel_size=(18, 9), stride=(18,1), padding=(9,0))
+        trunc_normal_(stem_audioset.weight, std=0.02)
+        nn.init.constant_(stem_audioset.bias, 0)  # type: ignore
+        model.downsample_layers[0][0] = stem_audioset  # type: ignore
+
+    return model
+
+def convnext_large(
+    pretrained: bool = False,
+    strict: bool = False,
+    in_22k: bool = False,
+    drop_path_rate: float = 0.1,
+    **kwargs,
+) -> ConvNeXt:
+    # timm femto variant (NOTE: still tweaking depths, will vary between 3-4M param, current is 3.7M
+    model = ConvNeXt(
+        in_chans=1,
+        num_classes=527,
+        depths=[3, 3, 27, 3],
+        dims=[192, 384, 768, 1536],
+        drop_path_rate=drop_path_rate,
+        **kwargs,
+    )
+    if pretrained:
+        url = (
+            CNEXT_IMAGENET_PRETRAINED_URLS["convnext_large_22k"]
+            if in_22k
+            else CNEXT_IMAGENET_PRETRAINED_URLS["convnext_large_1k"]
         )
         checkpoint = torch.hub.load_state_dict_from_url(
             url=url, map_location="cpu", check_hash=True  # type: ignore

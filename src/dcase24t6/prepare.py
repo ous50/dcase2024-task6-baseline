@@ -120,7 +120,7 @@ def prepare_data_metrics_models(
 
     for registry in (BASELINE_REGISTRY, CNEXT_REGISTRY):
         for name in registry.names:
-            registry.download_file(name, force, verbose)
+            registry.download_file(name, force, verbose) # type: ignore
 
     os.makedirs(dataroot, exist_ok=True)
 
@@ -162,9 +162,9 @@ def prepare_data_metrics_models(
             complexities = complexity_profiler.profile(example, pre_process)
             complexities.pop("model_output")
             complexity_profiler.save(
-                complexities,
+                complexities, # type: ignore
                 pre_process,
-                item,
+                item, # type: ignore
                 fmt_kwargs=dict(dataset=dataset_name, subset=subset),
             )
 

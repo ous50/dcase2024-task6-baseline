@@ -68,7 +68,7 @@ class TransDecoderModel(AACModel):
     def is_built(self) -> bool:
         return self.decoder is not None
 
-    def setup(self, stage: Stage) -> None:
+    def setup(self, stage: Stage) -> None:  # type: ignore
         if stage in ("fit", None) and "batch_size" in self.datamodule.hparams:
             source_batch_size = self.datamodule.hparams["batch_size"]
             target_batch_size = 1

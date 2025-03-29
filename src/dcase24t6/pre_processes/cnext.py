@@ -105,4 +105,4 @@ class ResampleMeanCNext(nn.Module):
 
         audio = audio.to(device=self.device)
         outputs = self.convnext(audio, audio_shape)
-        return batch | outputs
+        return batch | outputs # this function returns a dict that merges the input batch and the output of the model.
